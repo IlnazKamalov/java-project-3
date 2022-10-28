@@ -14,7 +14,7 @@ public class BaseSchema {
 
     public final boolean isValid(Object o) {
         for (Predicate<Object> objectPredicate: validList) {
-            if(!objectPredicate.test(o)) {
+            if (!objectPredicate.test(o)) {
                 return false;
             }
         }
