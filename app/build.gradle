@@ -13,7 +13,7 @@ repositories {
 }
 
 compileJava {
-    options.release = 17
+    options.release = 11
 }
 
 dependencies {
@@ -35,10 +35,10 @@ test {
 }
 
 jacocoTestReport {
-    dependsOn test
     reports {
         xml.enabled = true
     }
+    dependsOn test
 }
 
 checkstyle {
