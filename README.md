@@ -19,20 +19,28 @@ The [yup](https://github.com/jquense/yup) library is taken as the basis for the 
 ```java
     Validator validator = new Validator();
 
-    //strings structure check
+        // strings structure check
         
     StringSchema schema = validator.string().required();
-    schema.isValid("what does the fox say"); //true
-    schema.isValid(""); //false
-
-    //numbers structure check
+    schema.isValid("what does the fox say"); // true
+    schema.isValid(""); // false
+        
+        // numbers structure check
         
     NumberSchema schema = validator.number().required().positive();
-    schema.isValid(-10); //false
-    schema.isValid(10); //true
-
-    //map structure check
+    schema.isValid(-10); // false
+    schema.isValid(10); // true
+        
+        // map structure check
+        
+    MapSchema schema = validator.map();
     Map<String, String> data = new HashMap<>();
     data.put("key", "value");
-    assertTrue(schema.isValid(data)); //true
+    schema.isValid(data); // true
+        
+    schema.sizeof(2);
+    schema.isValid(data);  // false
+    data.put("key2", "value2");
+    schema.isValid(data); // true
+    
 ```
