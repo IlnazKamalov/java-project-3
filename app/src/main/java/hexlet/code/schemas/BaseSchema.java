@@ -12,9 +12,9 @@ public class BaseSchema {
         validList.add(predicate);
     }
 
-    public final boolean isValid(Object o) {
+    public final boolean isValid(Object object) {
         for (Predicate<Object> objectPredicate: validList) {
-            if (!objectPredicate.test(o)) {
+            if (!objectPredicate.test(object)) {
                 return false;
             }
         }

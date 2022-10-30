@@ -39,8 +39,34 @@ The [yup](https://github.com/jquense/yup) library is taken as the basis for the 
     schema.isValid(data); // true
         
     schema.sizeof(2);
-    schema.isValid(data);  // false
+    schema.isValid(data); // false
     data.put("key2", "value2");
     schema.isValid(data); // true
-    
+        
+        // shape - allows you to describe validation for Map object values by keys.
+        
+    Map<String, BaseSchema> schemas = new HashMap<>();
+    schemas.put("name", v.string().required());
+    schemas.put("age", v.number().positive());
+    schema.shape(schemas);
+
+    Map<String, Object> human1 = new HashMap<>();
+    human1.put("name", "Kolya");
+    human1.put("age", 100);
+    schema.isValid(human1); // true
+
+    Map<String, Object> human2 = new HashMap<>();
+    human2.put("name", "Maya");
+    human2.put("age", null);
+    schema.isValid(human2); // true
+
+    Map<String, Object> human3 = new HashMap<>();
+    human3.put("name", "");
+    human3.put("age", null);
+    schema.isValid(human3); // false
+
+    Map<String, Object> human4 = new HashMap<>();
+    human4.put("name", "Valya");
+    human4.put("age", -5);
+    schema.isValid(human4); // false
 ```
