@@ -9,6 +9,4 @@ lint:
 report:
 	make -C app report
 
-build-run: build run
-
 .PHONY: build
