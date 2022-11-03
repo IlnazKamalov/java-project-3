@@ -30,6 +30,7 @@ public class SchemasTest {
         assertTrue(schema.isValid("hexlet"));
         assertFalse(schema.isValid(null));
         assertFalse(schema.isValid(""));
+        assertFalse(schema.isValid("test"));
 
         schema.contains("what");
         assertTrue(schema.isValid(testString));
@@ -41,28 +42,27 @@ public class SchemasTest {
     }
 
     @Test
+    @SuppressWarnings("checkstyle:MagicNumber")
     public void testNumberSchema() {
         final Validator validator = new Validator();
         final NumberSchema schema = validator.number();
-        final int five = 5;
-        final int ten = 10;
 
         assertTrue(schema.isValid(null));
 
         schema.required();
         assertFalse(schema.isValid(null));
-        assertTrue(schema.isValid(ten));
+        assertTrue(schema.isValid(10));
         assertFalse(schema.isValid("5"));
 
         schema.positive();
-        assertTrue(schema.isValid(ten));
-        assertFalse(schema.isValid(-ten));
+        assertTrue(schema.isValid(10));
+        assertFalse(schema.isValid(-10));
 
-        schema.range(five, ten);
-        assertTrue(schema.isValid(five));
-        assertTrue(schema.isValid(ten));
-        assertFalse(schema.isValid(five - 1));
-        assertFalse(schema.isValid(ten + 1));
+        schema.range(5, 10);
+        assertTrue(schema.isValid(5));
+        assertTrue(schema.isValid(10));
+        assertFalse(schema.isValid(4));
+        assertFalse(schema.isValid(11));
     }
 
     @Test

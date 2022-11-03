@@ -6,14 +6,14 @@ import java.util.function.Predicate;
 
 public class BaseSchema {
 
-    private final List<Predicate<Object>> validList = new ArrayList<>();
+    private final List<Predicate<Object>> checks = new ArrayList<>();
 
     public final void addPredicate(Predicate<Object> predicate) {
-        validList.add(predicate);
+        checks.add(predicate);
     }
 
     public final boolean isValid(Object object) {
-        for (Predicate<Object> objectPredicate: validList) {
+        for (Predicate<Object> objectPredicate: checks) {
             if (!objectPredicate.test(object)) {
                 return false;
             }

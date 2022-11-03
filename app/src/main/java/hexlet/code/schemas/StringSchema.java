@@ -8,7 +8,7 @@ public class StringSchema extends BaseSchema {
     }
 
     public final StringSchema minLength(int length) {
-        addPredicate(predicate -> predicate instanceof String && String.valueOf(predicate).length() >= length);
+        addPredicate(value -> value instanceof String && String.valueOf(value).length() >= length);
         return this;
     }
 

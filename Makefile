@@ -1,8 +1,5 @@
 .DEFAULT_GOAL := build-run
 
-build:
-	make -C app clean build
-
 lint:
 	make -C app lint
 
